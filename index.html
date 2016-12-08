@@ -12207,8 +12207,19 @@ a.anchor-link {
     <span class="n">replay</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">tTot</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Init New Game </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span><span class="p">(</span><span class="n">randGoal</span><span class="p">):</span>
@@ -12231,7 +12242,19 @@ a.anchor-link {
         <span class="c1">#print(&quot;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&quot;)</span>
         <span class="c1">#print(&quot;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&quot;)</span>
         <span class="c1">#print(&quot;&amp;&amp;&amp;&amp;     GAME &quot;,i,&quot;        &amp;&amp;&quot;)</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>        <span class="k">while</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
             <span class="c1">#We are in state S</span>
             <span class="c1">#Let&#39;s run our Q function on S to get Q values for all possible actions</span>
             <span class="n">qval</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">numStations</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -12251,9 +12274,19 @@ a.anchor-link {
             <span class="n">prev</span> <span class="o">=</span> <span class="n">getCurrentStation</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
             <span class="n">new_state</span> <span class="o">=</span> <span class="n">makeMove</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">rM</span><span class="p">)</span>
             <span class="n">reward</span> <span class="o">=</span> <span class="n">getReward</span><span class="p">(</span><span class="n">new_state</span><span class="p">,</span> <span class="n">rM</span><span class="p">)</span>
+</pre></div>
 
+</div>
+</div>
+</div>
 
-            <span class="c1">#Experience replay storage</span>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>            <span class="c1">#Experience replay storage</span>
             <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">replay</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">buffer</span><span class="p">):</span> <span class="c1">#if buffer not filled, add to it</span>
                 <span class="n">replay</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">new_state</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span> <span class="c1">#if buffer full, overwrite old values</span>
@@ -12290,8 +12323,19 @@ a.anchor-link {
                 <span class="n">reward</span> <span class="o">=</span> <span class="n">getReward</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">rM</span><span class="p">)</span>
                 <span class="c1">#print(&quot;---_----__Reward Check: &quot;,reward)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</pre></div>
 
-            <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>            <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">reward</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span> <span class="c1"># or reward == 10.0: #if reached terminal state, update game status</span>
                 <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VICTORY&quot;</span><span class="p">)</span>
@@ -12312,7 +12356,7 @@ a.anchor-link {
 </div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">testAlgo</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">randStart</span><span class="p">,</span><span class="n">randGoal</span><span class="p">):</span>
@@ -12331,7 +12375,19 @@ a.anchor-link {
 
     <span class="n">prev</span> <span class="o">=</span> <span class="n">getCurrentStation</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
     <span class="n">status</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1">#while game still in progress</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>    <span class="c1">#while game still in progress</span>
     <span class="k">while</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
         <span class="c1">#print(&quot;((((((((()))))))&quot;)</span>
         <span class="c1">#print(&quot;((((((((()))))))&quot;)</span>
@@ -12369,7 +12425,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[45]:</div>
@@ -15012,7 +15068,7 @@ Losses:  0
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[46]:</div>
@@ -16455,7 +16511,7 @@ Losses:  0
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[44]:</div>
@@ -27936,7 +27992,7 @@ Losses:  58
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[47]:</div>
@@ -36081,7 +36137,7 @@ Losses:  37
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[48]:</div>
@@ -41988,19 +42044,6 @@ Losses:  23
 </div>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
 </div>
 </div>
 
